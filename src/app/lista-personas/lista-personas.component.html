@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class="title">Lista de personas</h2>
+
+    <section>
+      
+    <h3>Ingrese los datos</h3>
+     <form (submit)="agregarPersona(nombre.value, apellido.value, +edad.value, cedula.value)">
+      <input type="text" placeholder="Nombre" #nombre required>
+      <ul></ul>
+      <input type="text" placeholder="Apellido" #apellido required>
+      <ul></ul>
+      <input type="number" placeholder="Edad" #edad required>
+      <ul></ul>
+      <input type="text" placeholder="Cédula" #cedula required>
+      <ul></ul>
+      <button type="submit">Agregar</button>
+    </form>
+  </section>
+
+    <ul>
+      <table class="personas-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Cédula</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let persona of personas">
+            <ul></ul>
+            <td>{{ persona.nombre }}</td>
+            <ul></ul>
+            <td>{{ persona.apellido }}</td>
+            <ul></ul>
+            <td>{{ persona.edad }}</td>
+            <ul></ul>
+            <td>{{ persona.cedula }}</td>
+            <ul></ul>
+            <td>
+              <button (click)="eliminarPersona(persona)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ul>
+    
+    <p>Mayores de edad: {{ contarMayoresEdad() }}</p>
+    <p>Menores de edad: {{ contarMenoresEdad() }}</p>
+</body>
+</html>
