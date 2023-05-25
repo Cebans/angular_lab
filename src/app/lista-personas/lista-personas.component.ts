@@ -15,6 +15,14 @@ interface Persona {
 export class ListaPersonasComponent {
   personas: Persona[] = [];
 
+  constructor() {
+    // recuperar los datos almacenados en el almacenamiento local (si existen)
+    const storedData = localStorage.getItem('personas');
+    if (storedData) {
+      this.personas = JSON.parse(storedData);
+    }
+  }
+
   agregarPersona(nuevoNombre: string, nuevoApellido: string, nuevaEdad: number, nuevaCedula: string) {
     const nuevaPersona: Persona = {
       nombre: nuevoNombre,
@@ -24,6 +32,12 @@ export class ListaPersonasComponent {
     };
 
     this.personas.push(nuevaPersona);
+
+    // guardar los datos en el almacenamiento local
+    localStorage.setItem('personas', JSON.stringify(this.personas));
+
+    // imprimir la persona añadida
+    console.log('Persona añadida:', nuevaPersona);
   }
 
   eliminarPersona(persona: Persona) {
@@ -31,6 +45,9 @@ export class ListaPersonasComponent {
     if (index !== -1) {
       this.personas.splice(index, 1);
     }
+
+    // Aatualizar los datos en el almacenamiento local
+    localStorage.setItem('personas', JSON.stringify(this.personas));
   }
 
   contarMayoresEdad(): number {

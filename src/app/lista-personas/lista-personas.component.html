@@ -26,7 +26,7 @@
   </section>
 
     <ul>
-      <table class="personas-table">
+      <table >
         <thead>
           <tr>
             <th>Nombre</th>
@@ -37,15 +37,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let persona of personas">
-            <ul></ul>
+            
             <td>{{ persona.nombre }}</td>
-            <ul></ul>
+            
             <td>{{ persona.apellido }}</td>
-            <ul></ul>
+            
             <td>{{ persona.edad }}</td>
-            <ul></ul>
+            
             <td>{{ persona.cedula }}</td>
-            <ul></ul>
+            
             <td>
               <button (click)="eliminarPersona(persona)">Eliminar</button>
             </td>
